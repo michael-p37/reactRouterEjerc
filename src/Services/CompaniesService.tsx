@@ -7,7 +7,7 @@ const companies: arrayType[] = [
   { id: 4, name: "Company 4", description: "Description for Company 4" },
   { id: 5, name: "Company 5", description: "Description for Company 5" },
 ];
- 
+
 export function getCompanies() {
   return new Promise<arrayType[]>((resolve) => {
     setTimeout(() => {
@@ -15,17 +15,38 @@ export function getCompanies() {
     }, 800);
   });
 }
- 
-export function getCompany(id: arrayType['id']) {
+
+export function getCompany(id: arrayType["id"]) {
   return new Promise<arrayType>((resolve, reject) => {
     setTimeout(() => {
       const company = companies.find((company) => company.id === id);
- 
+
       if (company) {
         resolve(company);
       } else {
         reject(new Error(`Company with id ${id} not found`));
       }
+    }, 800);
+  });
+}
+export function updateCompany(id: arrayType["id"], update: Partial<arrayType>) {
+  return new Promise<arrayType>((resolve, reject) => {
+    setTimeout(() => {
+      const index = companies.find((company) => company.id === id);
+
+      if (index) {
+        Object.assign(index, update);
+        resolve(index);
+      } else {
+        reject(new Error(`Game with id ${id} not found`));
+      }
+
+      // if (index) {
+      //   companies[index] = {...companies[index], ...update}
+      //   resolve(companies[index]);
+      // } else {
+      //   reject(new Error(`Company with id ${id} not found`));
+      // }
     }, 800);
   });
 }

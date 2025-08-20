@@ -20,11 +20,12 @@ function Login() {
   }
   return (
     <>
-    <Link to='/'>Inicio</Link>
+      <Link to="/">Inicio</Link>
       <h2>Login page</h2>
       <form action="" onSubmit={() => onLogin}>
         <label htmlFor="">
           <input
+            id="username"
             type="text"
             value={values.username}
             onChange={(e) => handleChange("username", e.target.value)}
@@ -34,13 +35,13 @@ function Login() {
         </label>
         <label htmlFor="">
           <input
+            id="password"
             type="password"
             value={values.password}
             onChange={(e) => handleChange("password", e.target.value)}
             placeholder="Password"
           />
           Password
-          
         </label>
         <button type="submit">Enter</button>
       </form>

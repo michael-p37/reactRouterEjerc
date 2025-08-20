@@ -32,4 +32,31 @@ export function getGame(id: arrayType['id']) {
       }
     }, 800);
   });
+
 }
+// export async function getGame(id: arrayType['id']) {
+//   return new Promise<arrayType>((resolve, reject) => {
+//     setTimeout(() => {
+//       const game = games.find((g) => g.id === id );
+//       if (game) {
+//         resolve(game);
+//       }else {
+//         reject( new Error(`Game with id ${id} not found`));
+//       }
+//     }, 800)
+//   });
+// } 
+export function updateGame(id: arrayType['id'], update: Partial<arrayType>) {
+  return new Promise<arrayType>((resolve, reject) => {
+    setTimeout(() => {
+      const index = games.find((game) => game.id === id);
+ 
+      if (index) {
+      const game = Object.assign(index, update);
+        resolve(game);
+      } else {
+        reject(new Error(`Game with id ${id} not found`));
+      }
+    }, 800);
+  });
+} 

@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
 import type { arrayType } from "../../Services/GamesService";
 
 type listProps<T> = {
@@ -16,8 +16,9 @@ function Games<T>({ items, renderItem }: listProps<T>) {
       <Link to="/">Inicio</Link>
       <ul>{items.map(renderItem)}</ul>;
       {games.map((g: arrayType) => (
-        <li key={g.id}>{g.name}</li>
+        <li key={g.id}><Link to={`/games/${g.id}`}>{g.name}</Link></li>
       ))}
+      <Outlet/>
     </>
   );
 }

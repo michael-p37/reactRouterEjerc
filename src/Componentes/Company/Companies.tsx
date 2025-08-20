@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
 import type { arrayType } from "../../Services";
 
 function Companies() {
@@ -10,6 +10,8 @@ function Companies() {
       {companies.map((c) => (
         <li key={c.id}><Link to={`/companies/${c.id}`}>{c.name}</Link></li>
       ))}
+
+      <Outlet/>
     </>
   );
 }
